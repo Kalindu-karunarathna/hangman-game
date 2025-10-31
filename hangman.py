@@ -72,6 +72,7 @@ hangmanPics = [
 
 
 chooseWordLetters = list(chooseWord)
+enteredLetters =[]
 
 #tale length of chose word is used to have the number of spaces required and then assign those spaces to list
 lengthOfChooseWord = len(chooseWord)
@@ -97,18 +98,23 @@ wrongChances = 0
 while chooseWordLetters!=numberOfSpacesList and wrongChances<allWrongChances :
     userEnteredLetter = input("enter a letter : ").lower()
 
-    if userEnteredLetter in chooseWordLetters:
-        indexes = [i for i, ch in enumerate(chooseWord) if ch == userEnteredLetter]
-        for i in indexes:
-            numberOfSpacesList[i] = userEnteredLetter
-        print("you guess well!!!")
-        print("".join(numberOfSpacesList))
-    else:
-        print("your guess is wrong!!!")
-        print("".join(numberOfSpacesList))
-        wrongChances+=1
-    print(hangmanPics[wrongChances])
 
+    if userEnteredLetter in enteredLetters:
+        print("you already enter  "+userEnteredLetter+"\n\n")
+    else:
+
+        if userEnteredLetter in chooseWordLetters:
+            indexes = [i for i, ch in enumerate(chooseWord) if ch == userEnteredLetter]
+            for i in indexes:
+                numberOfSpacesList[i] = userEnteredLetter
+            print("you guess well!!!")
+            print("".join(numberOfSpacesList))
+        else:
+            print("your guess is wrong!!!")
+            print("".join(numberOfSpacesList))
+            wrongChances+=1
+        print(hangmanPics[wrongChances])
+    enteredLetters.append(userEnteredLetter)
 
 if wrongChances<allWrongChances:
     print("hangman saved...you won the game\n\n\n")
