@@ -1,5 +1,71 @@
 import random
 
+hangmanPics = [
+    """
+    +----+
+    |    |
+         |
+         |
+         |
+         |
+     =========
+    """,
+    """
+    +----+
+    |    |
+    O    |
+         |
+         |
+         |
+     =========
+    """,
+    """
+    +----+
+    |    |
+    O    |
+    |    |
+         |
+         |
+     =========
+    """,
+    """
+    +----+
+    |    |
+    O    |
+   /|    |
+         |
+         |
+     =========
+    """,
+    """
+    +----+
+    |    |
+    O    |
+   /|\\  |
+         |
+         |
+     =========
+    """,
+    """
+    +----+
+    |    |
+    O    |
+   /|\\  |
+   /     |
+         |
+     =========
+    """,
+    """
+    +----+
+    |    |
+    O    |
+   /|\\  |
+   / \\  |
+         |
+     =========
+    """
+]
+
 word_ist = ["aardvark","camel","baboon"]
 
 #choose random word and move its letters to a list
@@ -13,7 +79,13 @@ numberOfSpaces = ("_"*lengthOfChooseWord)
 numberOfSpacesList = list(numberOfSpaces)
 print("".join(numberOfSpacesList))
 
-allWrongChances = 4
+#instructions
+print("*when game start, there is no hangman.")
+print("*if enter wrong letter hangman start to appear step by step.")
+print("if hangman fully appeared, you loss the game.")
+print("if you find the word before hangman fully appeared, you won the game.")
+
+allWrongChances = 6
 wrongChances = 0
 
 
@@ -35,13 +107,13 @@ while chooseWordLetters!=numberOfSpacesList and wrongChances<allWrongChances :
         print("your guess is wrong!!!")
         print("".join(numberOfSpacesList))
         wrongChances+=1
-
+    print(hangmanPics[wrongChances])
 
 
 if wrongChances<allWrongChances:
-    print("you won the game")
+    print("hangman saved...you won the game")
 else:
-    print("you loss the game")
+    print("hangman died...you loss the game")
 
 
 
