@@ -1,4 +1,7 @@
 import random
+import hangmanWords
+chooseWord = random.choice(hangmanWords.word_list)
+
 
 hangmanPics = [
     """
@@ -66,11 +69,8 @@ hangmanPics = [
     """
 ]
 
-word_ist = ["aardvark","camel","baboon"]
 
-#choose random word and move its letters to a list
-randNum = random.randint(0,2)
-chooseWord = word_ist[randNum]
+
 chooseWordLetters = list(chooseWord)
 
 #tale length of chose word is used to have the number of spaces required and then assign those spaces to list
@@ -111,9 +111,11 @@ while chooseWordLetters!=numberOfSpacesList and wrongChances<allWrongChances :
 
 
 if wrongChances<allWrongChances:
-    print("hangman saved...you won the game")
+    print("hangman saved...you won the game\n\n\n")
 else:
-    print("hangman died...you loss the game")
+    print("word is...."+chooseWord)
+    print("hangman died...you loss the game\n\n\n")
+
 
 
 
